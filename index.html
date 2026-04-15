@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nejc - Spletna stran</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #111, #333);
+    color: white;
+    overflow-x: hidden;
+}
+
+header {
+    background: black;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #222;
+}
+
+nav button {
+    margin: 10px;
+    padding: 10px 20px;
+    background: orange;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background: red;
+    color: white;
+}
+
+.section {
+    padding: 40px;
+    text-align: center;
+}
+
+.box {
+    background: rgba(255,255,255,0.1);
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+img {
+    width: 300px;
+    border-radius: 20px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+button.big {
+    padding: 20px 40px;
+    font-size: 20px;
+    background: lime;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button.big:hover {
+    background: yellow;
+}
+
+/* flying text */
+.flying-text {
+    position: fixed;
+    font-size: 20px;
+    color: red;
+    animation: fly 5s linear infinite;
+}
+
+@keyframes fly {
+    from {
+        transform: translateY(100vh);
+    }
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+/* hidden sections */
+.hidden {
+    display: none;
+}
+
+footer {
+    background: black;
+    padding: 20px;
+    text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+🔥 NEJC OFFICIAL STRAN 🔥
+</header>
+
+<nav>
+<button onclick="showSection('home')">Domov</button>
+<button onclick="showSection('bio')">Življenjepis</button>
+<button onclick="showSection('gallery')">Galerija</button>
+<button onclick="showSection('contact')">Kontakt</button>
+</nav>
+
+<div id="home" class="section">
+    <div class="box">
+        <h1>Dobrodošli!</h1>
+        <p>To je najbolj epska spletna stran o Nejcu 💪</p>
+        <button class="big" onclick="explodeText()">🔥 Klikni me 🔥</button>
+    </div>
+</div>
+
+<div id="bio" class="section hidden">
+    <div class="box">
+        <h2>Življenjepis</h2>
+        <p>Nejc je legenda. Njegova zgodba je polna avantur, smeha in nepozabnih trenutkov.</p>
+        <p>Rodil se je nekje, kjer se začnejo velike zgodbe.</p>
+        <p>Vedno je bil znan po svojem humorju in energiji.</p>
+        <p>Njegov stil je unikaten in vedno izstopa.</p>
+        <p>Rad ima družbo, zabavo in dobre trenutke.</p>
+        <p>Njegovi prijatelji pravijo, da je eden najboljših.</p>
+        <p>Njegov moto: "Živi na polno!"</p>
+        <p>Njegove dogodivščine so vedno zanimive.</p>
+        <p>Vedno najde način, da nasmeje ljudi.</p>
+        <p>Legenda ostaja legenda 🔥</p>
+    </div>
+</div>
+
+<div id="gallery" class="section hidden">
+    <div class="box">
+        <h2>Galerija</h2>
+        <img src="nejc1.jpg">
+        <img src="nejc2.jpg">
+        <img src="nejc3.jpg">
+    </div>
+</div>
+
+<div id="contact" class="section hidden">
+    <div class="box">
+        <h2>Kontakt</h2>
+        <p>Snapchat: <b>n_21088</b></p>
+        <p>Za več info ga dodaj 🔥</p>
+    </div>
+</div>
+
+<footer>
+© 2026 Nejc Fan Page
+</footer>
+
+<script>
+
+function showSection(id) {
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.add('hidden'));
+
+    document.getElementById(id).classList.remove('hidden');
+}
+
+function explodeText() {
+    for (let i = 0; i < 50; i++) {
+        let text = document.createElement("div");
+        text.className = "flying-text";
+        text.innerText = "nejc je v nezo";
+
+        text.style.left = Math.random() * window.innerWidth + "px";
+        text.style.animationDuration = (2 + Math.random() * 5) + "s";
+
+        document.body.appendChild(text);
+    }
+}
+
+// dodatni cool efekt (klik kjerkoli)
+document.addEventListener("click", function(e) {
+    let circle = document.createElement("div");
+    circle.style.position = "absolute";
+    circle.style.width = "20px";
+    circle.style.height = "20px";
+    circle.style.background = "cyan";
+    circle.style.borderRadius = "50%";
+    circle.style.left = e.pageX + "px";
+    circle.style.top = e.pageY + "px";
+
+    document.body.appendChild(circle);
+
+    setTimeout(() => {
+        circle.remove();
+    }, 500);
+});
+
+</script>
+
+</body>
+</html>
